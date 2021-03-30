@@ -11,8 +11,8 @@
   --color-text: #FCFDFF;
 
   --color-primary: #41414C;
-  --color-secondary: #F1972C;
-  --color-secondary-hover: #FA9C2D;
+  --color-secondary: #3da0e2;
+  --color-secondary-hover: #18689e;
   
   --color-input-background: #F8F8FC;
   --color-button-text: #FFFFFF;
@@ -44,7 +44,7 @@
   }
 }
 
-@media(max-width: 970px) {
+@media(max-width: 992px) {
   html {
     font-size: 87.5%; /* 14px */
   }

@@ -1,5 +1,7 @@
 #page-profile .page-header ~ .container {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 aside.card {
@@ -50,4 +52,30 @@ aside p {
 
 main {
   flex: 1;
+}
+
+@media(max-width: 992px) {
+  #page-profile .page-header ~ .container {
+    flex-direction: column;
+    margin-bottom: 4rem;
+  }
+
+  aside.card {
+    width: 60%;
+
+    margin-right: 0;
+    margin-bottom: 4rem;
+  }
+}
+
+@media(max-width: 768px) {
+  aside.card {
+    width: 80%;
+  }
+}
+
+@media(max-width: 450px) {
+  aside.card {
+    width: 90%;
+  }
 }

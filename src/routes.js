@@ -76,9 +76,9 @@ const Job = {
         index(req, res) {
             const updatedJobs = Job.data.map((job) => {
                 const remainingDays = Job.services.getRemainingDays(job)
-                const status = remainingDays <= 0 ? 'done': 'progress'
+                const status = remainingDays <= 0 ? 'done' : 'progress'
                 const budget = Job.services.calculateBudget(job, Profile.data["value-hour"])
-                
+
                 return {
                     ...job,
                     remainingDays: remainingDays,
@@ -86,11 +86,11 @@ const Job = {
                     budget: budget
                 }
             })
-        
+
             return res.render(views + "index", { jobs: updatedJobs })
         },
-        
-        getJobs(req, res) { 
+
+        getJobs(req, res) {
             return res.render(views + "job")
         },
 
@@ -104,7 +104,7 @@ const Job = {
                 "total-hours": req.body["total-hours"],
                 created_at: Date.now()
             })
-        
+
             return res.redirect('/')
         },
 
@@ -119,23 +119,57 @@ const Job = {
 
             job.budget = Job.services.calculateBudget(job, Profile.data["value-hour"])
 
-
             return res.render(views + "job-edit", { job })
+        },
+
+        update(req, res) {
+            const jobId = req.params.id
+
+            const job = Job.data.find(job => job.id == jobId)
+
+            if (!job) {
+                return res.send("Job not found.")
+            }
+
+            const updatedJob = {
+                ...job,
+                name: req.body.name,
+                "total-hours": req.body["total-hours"],
+                "daily-hours": req.body["daily-hours"]
+            }
+
+            Job.data = Job.data.map((job) => {
+                if (Number(job.id) === Number(jobId)) {
+                    job = updatedJob
+                }
+
+                return job
+            })
+
+            return res.redirect('/job/' + jobId)
+        },
+
+        delete(req, res) {
+            const jobId = req.params.id
+
+            Job.data = Job.data.filter(job => Number(job.id) !== Number(jobId)) // retorna o que for falso
+
+            return res.redirect('/')
         }
     },
-    
+
     services: {
         getRemainingDays(job) {
             const remainingDays = (job["total-hours"] / job["daily-hours"]).toFixed()
-        
+
             const createDate = new Date(job.created_at)
             const dueDay = createDate.getDate() + Number(remainingDays)
             const dueDateInMs = createDate.setDate(dueDay)
-        
+
             const timeDiffInMs = dueDateInMs - Date.now()
             const dayInMs = 1000 * 60 * 60 * 24
             const dayDiff = Math.floor(timeDiffInMs / dayInMs)
-        
+
             return dayDiff
         },
 
@@ -152,6 +186,9 @@ routes.get('/job', Job.controllers.getJobs)
 routes.post('/job', Job.controllers.save)
 
 routes.get('/job/:id', Job.controllers.show)
+routes.post('/job/:id', Job.controllers.update)
+
+routes.post('/job/delete/:id', Job.controllers.delete)
 
 routes.get('/profile', Profile.controllers.index)
 routes.post('/profile', Profile.controllers.update)

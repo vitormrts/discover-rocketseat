@@ -1,7 +1,14 @@
-aside.card {
-  width: 22rem;
+.container {
+  justify-content: space-evenly;
+}
 
-  margin-left: 8rem;
+aside.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 22rem;
 
   text-align: center;
 
@@ -52,12 +59,14 @@ aside .button + .button {
     margin: 4rem 0 0 0;
   }
 }
+.input-group {
+  flex-direction: column;
+}
 
-@media(max-width: 768px) {
-  aside.card {
-    /* width: 80%;
+.input-wrapper {
+  width: 100%;
+}
 
-    margin-top: 4rem;
-    margin: 0; */
-  }
+form .input-group .input-wrapper + .input-wrapper {
+  margin: 0;
 }

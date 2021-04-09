@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Dev Finance</title>
+</head>
+<body>
+    <div class="container">
+        <header class="container__header">
+            <img class="container__logo" src="/assets/logo.svg" alt="Logo Dev Finance">
+        </header>
+
+        <main class="container__main">
+            <section id="balance">
+                <h2 class="container__subtitle sr-only">Balanço</h2>
+
+                <div class="container__card">
+                    <h3 class="container__name">
+                        <span>Entradas</span>
+                        <img src="/assets/income.svg" alt="Income image">
+                    </h3>
+                    <p class="container__value">R$ 5.000,00</p>
+                </div>
+
+                <div class="container__card">
+                    <h3 class="container__name">
+                        <span>Saídas</span>
+                        <img src="/assets/expense.svg" alt="Expense image">
+                    </h3>
+                    <p class="container__value">R$ 2.000,00</p>
+                </div>
+
+                <div class="container__card total">
+                    <h3 class="container__name">
+                        <span>Total</span>
+                        <img src="/assets/total.svg" alt="Total image">
+                    </h3>
+                    <p class="container__value">R$ 3.000,00</p>
+                </div>
+            </section>
+            <section id="transaction">
+                <h2 class="container__subtitle sr-only">Transações</h2>
+
+                <a class="container__new-transation" onclick="Modal.open()" href="#">+ Nova Transação</a>
+
+                <table class="container__table">
+                    <thead class="container__table-head">
+                        <tr class="container__table-row">
+                            <th class="container__table-header">Descrição</th>
+                            <th class="container__table-header">Valor</th>
+                            <th class="container__table-header">Data</th>
+                            <th class="container__table-header">img</th>
+                        </tr>
+                    </thead>
+                    <tbody class="container__table-body">
+                        <tr class="container__table-row">
+                            <td class="container__table-data description">Luz</td>
+                            <td class="container__table-data expense">- R$ 500,00</td>
+                            <td class="container__table-data date">10/04/2021</td>
+                            <td class="container__table-data">
+                                <img src="/assets/minus.svg" alt="Delete transation">
+                            </td>
+                        </tr>
+                        <tr class="container__table-row">
+                            <td class="container__table-data description">Criação de Website</td>
+                            <td class="container__table-data income">R$ 5.000,00</td>
+                            <td class="container__table-data date">11/04/2021</td>
+                            <td class="container__table-data">
+                                <img src="/assets/minus.svg" alt="Delete transation"
+                            ></td>
+                        </tr>
+                        <tr class="container__table-row">
+                            <td class="container__table-data description">Aluguel</td>
+                            <td class="container__table-data expense">- R$ 1.500,00</td>
+                            <td class="container__table-data date">16/04/2021</td>
+                            <td class="container__table-data">
+                                <img src="/assets/minus.svg" alt="Delete transation">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <div class="container__modal-overlay">
+            <div class="container__modal-content">
+                <div class="container__form-group">
+                    <h2 class="container__subtitle">Nova Transação</h2>
+
+                    <form class="container__form" action="">
+                        <fieldset class="container__input-group">
+                            <label class="container__label sr-only" for="description">Descrição</label>
+                            <input 
+                                type="text" 
+                                class="container__input" 
+                                id="description" 
+                                name="description"
+                                placeholder="Descrição">
+                        </fieldset>
+
+                        <fieldset class="container__input-group">
+                            <label class="container__label sr-only" for="amount">Valor</label>
+                            <input 
+                                type="number" 
+                                step="0.1"
+                                class="container__input" 
+                                id="amount" 
+                                name="amount"
+                                placeholder="0,00">
+
+
+                            <small class="container__help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais.</small>
+                        </fieldset>
+
+                        <fieldset class="container__input-group">
+                            <label class="container__label sr-only" for="date">Data</label>
+                            <input 
+                                type="date" 
+                                class="container__input" 
+                                id="date" 
+                                name="date">
+                        </fieldset>
+
+                        <div class="container__button-group">
+                            <button class="container__form-button"><a href="#" class="container__cancel">Cancelar</a></button>
+                            <button class="container__form-button">Salvar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="container__footer">
+            <p class="container__footer-description">dev.finance$</p>
+        </footer>
+
+        <script>
+            Modal = {
+                open() {
+                    alert('Abri o modal');
+                }
+            }
+        </script>
+    </div>
+
+</body>
+</html>

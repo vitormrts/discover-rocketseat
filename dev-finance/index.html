@@ -57,7 +57,7 @@
                             <th class="container__table-header">Descrição</th>
                             <th class="container__table-header">Valor</th>
                             <th class="container__table-header">Data</th>
-                            <th class="container__table-header">img</th>
+                            <th class="container__table-header"></th>
                         </tr>
                     </thead>
                     <tbody class="container__table-body">
@@ -70,21 +70,20 @@
                             </td>
                         </tr>
                         <tr class="container__table-row">
-                            <td class="container__table-data description">Criação de Website</td>
-                            <td class="container__table-data income">R$ 5.000,00</td>
-                            <td class="container__table-data date">11/04/2021</td>
-                            <td class="container__table-data">
-                                <img src="/assets/minus.svg" alt="Delete transation"
-                            ></td>
-                        </tr>
-                        <tr class="container__table-row">
                             <td class="container__table-data description">Aluguel</td>
                             <td class="container__table-data expense">- R$ 1.500,00</td>
                             <td class="container__table-data date">16/04/2021</td>
                             <td class="container__table-data">
                                 <img src="/assets/minus.svg" alt="Delete transation">
                             </td>
-
+                        </tr>
+                        <tr class="container__table-row">
+                            <td class="container__table-data description">Criação de Site</td>
+                            <td class="container__table-data income">R$ 5.500,00</td>
+                            <td class="container__table-data date">16/04/2021</td>
+                            <td class="container__table-data">
+                                <img src="/assets/minus.svg" alt="Delete transation">
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -131,7 +130,7 @@
                         </fieldset>
 
                         <div class="container__button-group">
-                            <button class="container__form-button"><a href="#" class="container__cancel">Cancelar</a></button>
+                            <button onclick="Modal.close()" class="container__form-button"><a href="#" class="container__cancel">Cancelar</a></button>
                             <button class="container__form-button">Salvar</button>
                         </div>
 
@@ -145,9 +144,13 @@
         </footer>
 
         <script>
-            Modal = {
+            const Modal = {
                 open() {
-                    alert('Abri o modal');
+                    document.querySelector(".container__modal-overlay").classList.add('active');
+                },
+
+                close() {
+                    document.querySelector(".container__modal-overlay").classList.remove('active');
                 }
             }
         </script>

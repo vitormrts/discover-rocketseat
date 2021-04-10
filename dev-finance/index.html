@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <header class="container__header">
-            <img class="container__logo" src="/assets/logo.svg" alt="Logo Dev Finance">
+            <img class="container__logo" src="./assets/logo.svg" alt="Logo Dev Finance">
         </header>
 
         <main class="container__main">
@@ -25,31 +25,31 @@
                 <div class="container__card">
                     <h3 class="container__name">
                         <span>Entradas</span>
-                        <img src="/assets/income.svg" alt="Income image">
+                        <img src="./assets/income.svg" alt="Income image">
                     </h3>
-                    <p class="container__value">R$ 5.000,00</p>
+                    <p class="container__value" id="income">R$ 5.000,00</p>
                 </div>
 
                 <div class="container__card">
                     <h3 class="container__name">
                         <span>Saídas</span>
-                        <img src="/assets/expense.svg" alt="Expense image">
+                        <img src="./assets/expense.svg" alt="Expense image">
                     </h3>
-                    <p class="container__value">R$ 2.000,00</p>
+                    <p class="container__value" id="expense">R$ 2.000,00</p>
                 </div>
 
                 <div class="container__card total">
                     <h3 class="container__name">
                         <span>Total</span>
-                        <img src="/assets/total.svg" alt="Total image">
+                        <img src="./assets/total.svg" alt="Total image">
                     </h3>
-                    <p class="container__value">R$ 3.000,00</p>
+                    <p class="container__value" id="total">R$ 3.000,00</p>
                 </div>
             </section>
             <section id="transaction">
                 <h2 class="container__subtitle sr-only">Transações</h2>
 
-                <a class="container__new-transation" onclick="Modal.open()" href="#">+ Nova Transação</a>
+                <a class="container__new-transation" onclick="Modal.toggle()" href="#">+ Nova Transação</a>
 
                 <table class="container__table">
                     <thead class="container__table-head">
@@ -61,30 +61,7 @@
                         </tr>
                     </thead>
                     <tbody class="container__table-body">
-                        <tr class="container__table-row">
-                            <td class="container__table-data description">Luz</td>
-                            <td class="container__table-data expense">- R$ 500,00</td>
-                            <td class="container__table-data date">10/04/2021</td>
-                            <td class="container__table-data">
-                                <img src="/assets/minus.svg" alt="Delete transation">
-                            </td>
-                        </tr>
-                        <tr class="container__table-row">
-                            <td class="container__table-data description">Aluguel</td>
-                            <td class="container__table-data expense">- R$ 1.500,00</td>
-                            <td class="container__table-data date">16/04/2021</td>
-                            <td class="container__table-data">
-                                <img src="/assets/minus.svg" alt="Delete transation">
-                            </td>
-                        </tr>
-                        <tr class="container__table-row">
-                            <td class="container__table-data description">Criação de Site</td>
-                            <td class="container__table-data income">R$ 5.500,00</td>
-                            <td class="container__table-data date">16/04/2021</td>
-                            <td class="container__table-data">
-                                <img src="/assets/minus.svg" alt="Delete transation">
-                            </td>
-                        </tr>
+
                     </tbody>
                 </table>
             </section>
@@ -95,7 +72,7 @@
                 <div class="container__form-group">
                     <h2 class="container__subtitle">Nova Transação</h2>
 
-                    <form class="container__form" action="">
+                    <form class="container__form" onsubmit="Form.submit(event)" action="">
                         <fieldset class="container__input-group">
                             <label class="container__label sr-only" for="description">Descrição</label>
                             <input 
@@ -130,7 +107,7 @@
                         </fieldset>
 
                         <div class="container__button-group">
-                            <button onclick="Modal.close()" class="container__form-button"><a href="#" class="container__cancel">Cancelar</a></button>
+                            <button onclick="Modal.toggle()" class="container__form-button"><a href="#" class="container__cancel">Cancelar</a></button>
                             <button class="container__form-button">Salvar</button>
                         </div>
 
@@ -142,19 +119,9 @@
         <footer class="container__footer">
             <p class="container__footer-description">dev.finance$</p>
         </footer>
-
-        <script>
-            const Modal = {
-                open() {
-                    document.querySelector(".container__modal-overlay").classList.add('active');
-                },
-
-                close() {
-                    document.querySelector(".container__modal-overlay").classList.remove('active');
-                }
-            }
-        </script>
     </div>
+
+    <script src="./scripts.js"></script>
 
 </body>
 </html>

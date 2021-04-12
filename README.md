@@ -12,7 +12,7 @@
 [Click here](https://github.com/vitormrts/discover-rocket-seat/tree/master/dev-finance) to see this project with more details.
 
 <div align="center">
-    <img src="dev-finance/demo/dashboard-positive.png" hspace="20" vspace="10" width="100%"/> 
+    <img src="dev-finance/src/images/demo/dashboard-positive.png" hspace="20" vspace="10" width="100%"/> 
 </div>
 
 ## 👔 Jobs Calc

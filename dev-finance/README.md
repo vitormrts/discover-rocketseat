@@ -5,13 +5,13 @@ Just insert a new transaction, informing if it is an entry or expense. The calcu
 
 ## 🎥 Demo
 <div align="center">
-    <img src="demo/dashboard-positive.png" hspace="20" vspace="10" width="70%"/> 
+    <img src="src/images/demo/dashboard-positive.png" hspace="20" vspace="10" width="70%"/> 
 </div>
 <div align="center">
-    <img src="demo/new-transaction.png" hspace="20" vspace="10" width="70%"/> 
+    <img src="src/images/demo/new-transaction.png" hspace="20" vspace="10" width="70%"/> 
 </div>
 <div align="center">
-    <img src="demo/dashboard-negative.png" hspace="20" vspace="10" width="70%"/> 
+    <img src="src/images/demo/dashboard-negative.png" hspace="20" vspace="10" width="70%"/> 
 </div>
 
 ## 🚀 Technologies

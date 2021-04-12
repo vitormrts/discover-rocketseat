@@ -1,0 +1,4 @@
+node_modules/
+
+
+*.ejs linguist-detectable=false

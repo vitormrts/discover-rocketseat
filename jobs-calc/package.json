@@ -1,0 +1,22 @@
+{
+  "name": "jobs-calc-app",
+  "version": "1.0.0",
+  "description": "JobsCalc is a calculation estimation application for freelance projects, where it is possible to register and delete jobs (projects), obtaining an estimate of the cost of each job. In addition, it is possible to trace the hourly value of the person who will be using the system.",
+  "main": "src/server.js",
+  "repository": "https://github.com/vitormrts/jobs-calc-app",
+  "author": "Vitor Martins Cruz <vitormartinscruz.dev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon .",
+    "init-db": "node src/db/init.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "sqlite": "^4.0.21",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

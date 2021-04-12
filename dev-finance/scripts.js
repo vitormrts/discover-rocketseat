@@ -17,20 +17,20 @@ const LocalStorage = {
 const Transaction = {
     all: LocalStorage.get(),
 
-    create(transaction) {
+    add(transaction) {
+        const id = this.all.length + 1; 
+
+        transaction.id = id;
+
         this.all.push(transaction);
 
         App.reload();
     },
 
-    update(id, updatedTransaction) {
+    remove(id) {
         const index = this.all.findIndex(transaction => Number(transaction.id) == id);
-
-        this.all[index] = updatedTransaction;
-    },
-
-    delete(id) {
-        const index = this.all.findIndex(transaction => Number(transaction.id) == id);
+        console.log(id)
+        console.log(index)
 
         this.all.splice(index, 1);
         App.reload();
@@ -115,8 +115,10 @@ const Form = {
             // formatacao dos valores
             const transaction = this.formatValues();
 
+            console.log(transaction.amount)
+
             // adicionando transacao
-            Transaction.create(transaction);
+            Transaction.add(transaction);
 
             // limpando campos
             this.clearFields();
@@ -132,7 +134,7 @@ const Form = {
 const DOM = {
     transactionsContainer: document.querySelector('.container__table-body'),
 
-    addTransaction(transaction, index) {
+    addTransaction(transaction) {
         const tr = document.createElement('tr');
         tr.classList.add('container__table-row');
 
@@ -151,8 +153,7 @@ const DOM = {
             <td class="container__table-data ${amountClass}">${amount}</td>
             <td class="container__table-data date">${transaction['date']}</td>
             <td class="container__table-data">
-                <img onclick="Modal.toggle()" src="./assets/edit.svg" alt="Update transation">
-                <img onclick="Transaction.delete(${transaction.id})" src="./assets/minus.svg" alt="Delete transation">
+                <img onclick="Transaction.remove(${transaction.id})" src="./assets/minus.svg" alt="Delete transation">
             </td>
         `;
 
@@ -160,6 +161,9 @@ const DOM = {
     },
 
     updateBalance() {
+        const totalCard = document.getElementById('total-card');
+        totalCard.style.background = Transaction.total() >= 0 ? "#49AA26" : "#e92929";
+
         document.getElementById('income').innerHTML = Utils.formatCurrency(Transaction.incomes());
         document.getElementById('expense').innerHTML = Utils.formatCurrency(Transaction.expenses());
         document.getElementById('total').innerHTML = Utils.formatCurrency(Transaction.total());
@@ -172,8 +176,8 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
-        value = Number(value.replace(/\,\./g, "")) * 100;
-        return value;
+        value = value * 100;
+        return Math.floor(value);
     },
 
     formatDate(date) {

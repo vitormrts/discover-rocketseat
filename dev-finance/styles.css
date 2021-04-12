@@ -107,6 +107,14 @@ body {
     margin-top: 1rem;
 }
 
+#income {
+    color: var(--color-green);
+}
+
+#expense {
+    color: var(--color-red);
+}
+
 /* LINKS AND BUTTONS */
 .container__new-transation {
     text-decoration: none;
@@ -167,15 +175,8 @@ body {
     color:#5d6375;
 }
 
-.container__table-data:last-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-} 
-
 .container__table-data > img {
     cursor: pointer;
-    width: 25px;
 }
 
 .container__table-data.description {

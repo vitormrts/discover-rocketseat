@@ -4,27 +4,18 @@ const Modal = {
     }
 }
 
+const LocalStorage = {
+    get() {
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
+    },
+
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions));
+    }
+}
+
 const Transaction = {
-    all: [
-        {
-            id: 1,
-            description: 'Luz',
-            amount: -50000,
-            date: '23/01/2021'
-        },
-        {
-            id: 2,
-            description: 'Website',
-            amount: 500000,
-            date: '25/01/2021'
-        },
-        {
-            id: 3,
-            description: 'Internet',
-            amount: -20000,
-            date: '20/01/2021'
-        }
-    ],
+    all: LocalStorage.get(),
 
     add(transaction) {
         this.all.push(transaction);
@@ -36,7 +27,6 @@ const Transaction = {
         const index = this.all.findIndex(transaction => Number(transaction.id) == id);
 
         this.all.splice(index, 1);
-
         App.reload();
     },
 
@@ -157,7 +147,7 @@ const DOM = {
             <td class="container__table-data ${amountClass}">${amount}</td>
             <td class="container__table-data date">${transaction['date']}</td>
             <td class="container__table-data">
-                <img src="./assets/minus.svg" alt="Delete transation">
+                <img onclick="Transaction.remove(${transaction.id})" src="./assets/minus.svg" alt="Delete transation">
             </td>
         `;
 
@@ -206,6 +196,7 @@ const App = {
     init() {
         Transaction.all.forEach((transaction) => DOM.addTransaction(transaction));
         DOM.updateBalance();
+        LocalStorage.set(Transaction.all) 
     },
 
     reload() {

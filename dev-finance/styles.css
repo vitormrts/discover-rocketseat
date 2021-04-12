@@ -167,6 +167,10 @@ body {
     color:#5d6375;
 }
 
+.container__table-data > img {
+    cursor: pointer;
+}
+
 .container__table-data.description {
     color: var(--color-dark-blue);
 }

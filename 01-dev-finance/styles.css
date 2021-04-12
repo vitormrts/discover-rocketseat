@@ -167,8 +167,15 @@ body {
     color:#5d6375;
 }
 
+.container__table-data:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+} 
+
 .container__table-data > img {
     cursor: pointer;
+    width: 25px;
 }
 
 .container__table-data.description {

@@ -17,13 +17,19 @@ const LocalStorage = {
 const Transaction = {
     all: LocalStorage.get(),
 
-    add(transaction) {
+    create(transaction) {
         this.all.push(transaction);
 
         App.reload();
     },
 
-    remove(id) {
+    update(id, updatedTransaction) {
+        const index = this.all.findIndex(transaction => Number(transaction.id) == id);
+
+        this.all[index] = updatedTransaction;
+    },
+
+    delete(id) {
         const index = this.all.findIndex(transaction => Number(transaction.id) == id);
 
         this.all.splice(index, 1);
@@ -109,10 +115,8 @@ const Form = {
             // formatacao dos valores
             const transaction = this.formatValues();
 
-            console.log(transaction.amount)
-
             // adicionando transacao
-            Transaction.add(transaction);
+            Transaction.create(transaction);
 
             // limpando campos
             this.clearFields();
@@ -147,7 +151,8 @@ const DOM = {
             <td class="container__table-data ${amountClass}">${amount}</td>
             <td class="container__table-data date">${transaction['date']}</td>
             <td class="container__table-data">
-                <img onclick="Transaction.remove(${transaction.id})" src="./assets/minus.svg" alt="Delete transation">
+                <img onclick="Modal.toggle()" src="./assets/edit.svg" alt="Update transation">
+                <img onclick="Transaction.delete(${transaction.id})" src="./assets/minus.svg" alt="Delete transation">
             </td>
         `;
 

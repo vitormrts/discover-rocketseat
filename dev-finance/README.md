@@ -38,7 +38,7 @@ $ cd dev-finance
 # Install npx
 yarn add npx -g
 
-# Run the app in
+# Run the app
 npx http-server
 ```
 

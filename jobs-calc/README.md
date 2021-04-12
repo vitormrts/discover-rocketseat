@@ -33,6 +33,7 @@ Calculate the hourly rate of your work based on the following topics:
 * ✔️ CSS 
 * ✔️ JavaScript
 * ✔️ SQLite
+* ✔️ EJS (a template for JavaScript)
 
 ## ℹ️ How To Use
 ### 1. Getting Started

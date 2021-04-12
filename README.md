@@ -22,6 +22,16 @@
     <img src="jobs-calc/public/demo/dashboard.png" hspace="20" vspace="10" width="100%"/> 
 </div>
 
+## 🤝 Contributing
+
+To contributing to this project, follow the steps bellow.
+
+1. Fork the Project;
+2. Create your Feature Branch (`git checkout -b new-branch`)
+3. Commit your Changes (`git commit -m 'DESCRIPTION OF CHANGES'`)
+4. Push to the Branch (`git push origin new-branch`)
+5. Open a Pull Request
+
 ## 📝 License
 This project is under the MIT license. See the [LICENSE](https://github.com/vitormrts/discover-rocketseat/blob/master/LICENSE) file for more details.
 
